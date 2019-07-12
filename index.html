@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+  <title>Localstorage example</title>
+<script>
+
+  function onInit(){
+    if(!window.localStorage){
+      alert('No support for localStorage');
+    }
+  }
+
+  function AddName(){
+    var roll = document.getElementById('roll-input').value;
+    var name = document.getElementById('name-input').value;
+    localStorage.setItem(roll,name);
+    updateTable(roll,name);
+  }
+
+  function updateTable(roll,name){
+    document.getElementById("name-table-body").innerHTML += "<tr><td>" + roll + "</td><td>"
+            + name + "</td></tr>";
+
+  }
+</script>
+
+
+</head>
+
+<body onload="onInit()">
+  
+    <h1>localStorage Example</h1>
+
+    <p>
+        <fieldset>
+            <legend>Add Your Name to the list</legend>
+            <label>Roll Number</label>
+            <input id="roll-input">
+            <label>Name</label>
+            <input id="name-input">
+            <button id="addButton" onclick="AddName()">Add</button>
+        </fieldset>
+    </p>
+
+    <table>
+        <thead>
+            <tr><th>Roll Number</th><th>Name</th></tr>
+        </thead>
+        <tbody id="name-table-body">
+        </tbody>
+    </table>
+
+</body>
+
+
+</html>
+
