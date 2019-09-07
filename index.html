@@ -4,18 +4,30 @@
 <script>
 
   function onInit(){
+		// check if the broswer supports localstorage
     if(!window.localStorage){
       alert('No support for localStorage');
     }
   }
 
   function AddName(){
+		// get a reference to roll number input
     var roll = document.getElementById('roll-input').value;
+		// get a reference to name input
     var name = document.getElementById('name-input').value;
+		// add name and roll number to localstorage
+		/*
+			example:
+				user input
+					name : sachin
+					roll : 21
+				localstorage will save it as:
+					21 : sachin
+		*/
     localStorage.setItem(roll,name);
     updateTable(roll,name);
   }
-
+	// function to add a new student to the table
   function updateTable(roll,name){
     document.getElementById("name-table-body").innerHTML += "<tr><td>" + roll + "</td><td>"
             + name + "</td></tr>";
