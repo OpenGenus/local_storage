@@ -1,56 +1,65 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Localstorage example</title>
-<script>
-
-  function onInit(){
-    if(!window.localStorage){
-      alert('No support for localStorage');
-    }
-  }
-
-  function AddName(){
-    var roll = document.getElementById('roll-input').value;
-    var name = document.getElementById('name-input').value;
-    localStorage.setItem(roll,name);
-    updateTable(roll,name);
-  }
-
-  function updateTable(roll,name){
-    document.getElementById("name-table-body").innerHTML += "<tr><td>" + roll + "</td><td>"
-            + name + "</td></tr>";
-
-  }
-</script>
-
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Localstorage example</title>
+	<script>
+	
+		function onInit(){
+			// check if the broswer supports localstorage
+			if(!window.localStorage){
+				alert('No support for localStorage');
+			}
+		}
+	
+		function AddName(){
+			// get a reference to roll number input
+			var roll = document.getElementById('roll-input').value;
+			// get a reference to name input
+			var name = document.getElementById('name-input').value;
+			// add name and roll number to localstorage
+			/*
+				example:
+					user input
+						name : sachin
+						roll : 21
+					localstorage will save it as:
+						21 : sachin
+			*/
+			localStorage.setItem(roll,name);
+			updateTable(roll,name);
+		}
+		// function to add a new student to the table
+		function updateTable(roll,name){
+			document.getElementById("name-table-body").innerHTML += "<tr><td>" + roll + "</td><td>"
+							+ name + "</td></tr>";
+	
+		}
+	</script>
 </head>
-
 <body onload="onInit()">
-  
-    <h1>localStorage Example</h1>
+	<h1>localStorage Example</h1>
 
-    <p>
-        <fieldset>
-            <legend>Add Your Name to the list</legend>
-            <label>Roll Number</label>
-            <input id="roll-input">
-            <label>Name</label>
-            <input id="name-input">
-            <button id="addButton" onclick="AddName()">Add</button>
-        </fieldset>
-    </p>
+	<p>
+			<fieldset>
+					<legend>Add Your Name to the list</legend>
+					<label>Roll Number</label>
+					<input id="roll-input">
+					<label>Name</label>
+					<input id="name-input">
+					<button id="addButton" onclick="AddName()">Add</button>
+			</fieldset>
+	</p>
 
-    <table>
-        <thead>
-            <tr><th>Roll Number</th><th>Name</th></tr>
-        </thead>
-        <tbody id="name-table-body">
-        </tbody>
-    </table>
-
+	<table>
+			<thead>
+					<tr><th>Roll Number</th><th>Name</th></tr>
+			</thead>
+			<tbody id="name-table-body">
+			</tbody>
+	</table>
 </body>
-
-
 </html>
 
